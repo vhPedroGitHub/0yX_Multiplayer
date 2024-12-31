@@ -1,0 +1,49 @@
+##Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+##SPDX-License-Identifier: MIT-0
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo "install phase....."
+  pre_build:
+    commands:
+      # - pwd
+      # - ls -l /
+      # - apt update
+      - export SONAR_SCANNER_VERSION=6.0.0.4432
+      - export SONAR_SCANNER_HOME=$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux
+      - curl --create-dirs -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
+      - unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+      - export PATH=$SONAR_SCANNER_HOME/bin:$PATH
+      - export SONAR_SCANNER_OPTS="-server"
+#       #alternatives
+#       - mkdir /home/SCA/
+#       - cd /home/SCA/
+#       - wget https://github.com/jeremylong/DependencyCheck/releases/download/v9.1.0/dependency-check-9.1.0-release.zip
+#       - unzip dependency-check-9.1.0-release.zip
+#       - rm dependency-check-9.1.0-release.zip
+#       - chmod -R 775 dependency-check/bin/dependency-check.sh
+#       - cd $CODEBUILD_SRC_DIR/
+#       - apt install -y npm nodejs
+#       - npm install prettier eslint-config-prettier typescript eslint eslint-plugin-react @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-prettier eslint-plugin-jsx-a11y eslint-plugin-react-hooks eslint-plugin-unused-imports --save-dev
+# #      - npm install eslint@latest --save-dev
+# #      - npm install eslint-plugin-react@latest --save-dev
+# #      - npm install eslint-config-google@latest --save-dev
+# #      - npm install @typescript-eslint/eslint-plugin@latest --save-dev
+#       - echo "stage pre_build completed"
+  build:
+    on-failure: CONTINUE
+    commands: 
+      # - cd $CODEBUILD_SRC_DIR/
+      # - /home/SCA/dependency-check/bin/dependency-check.sh --project "front" --format JSON --prettyPrint --enableExperimental --out /home/SCA/ --scan $CODEBUILD_SRC_DIR; EXITCODE=0
+      # - /home/SCA/dependency-check/bin/dependency-check.sh --project "front" --format HTML --prettyPrint --enableExperimental --out /home/SCA/ --scan $CODEBUILD_SRC_DIR; EXITCODE=0
+      # - ls -lt /home/SCA/
+      # - echo "OWASP dependency check analysis status is completed..." 
+      # - npx eslint ./${Front}/**/*.tsx --format json --output-file ./eslint-result.json; EXITCODE=0
+      - sonar-scanner -Dsonar.projectKey=${SonarProject} -Dsonar.projectName=${SonarProject} -Dsonar.host.url=${SonarURL} -Dsonar.login=${SonarLogin} -Dsonar.sources=. #-Dsonar.dependencyCheck.jsonReportPath=/home/SCA/./dependency-check-report.json -Dsonar.dependencyCheck.htmlReportPath=/home/SCA/./dependency-check-report.html -Dsonar.eslint.reportPaths=./eslint-result.json
+#   post_build:
+#     commands:
+#       - echo "OK"
+# cache:
+#  paths:
+#    - '/home/SCA/**/*'

@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  build:
+    on-failure: CONTINUE 
+    commands:
+      - FOLDER=`echo ${CODEBUILD_INITIATOR##*-}`
+      - cd infra/infra_auto/environments/$FOLDER
+      - tflint --init
+      - tflint -f junit --force > tflint_report.xml && tflint
+reports:
+  tflint:
+    base-directory: reports
+    files:
+      - tflint_report.xml
+    file-format: "JUNITXML"

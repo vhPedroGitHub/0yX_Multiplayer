@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+        nodejs: 22
+
+    commands:
+      - echo Entered the install phase...
+      - npm install --prefix ./front
+      
+    finally:
+      - echo This always runs even if the update or install command fails 
+
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - npm run build --prefix ./front
+      - ls front/
+
+
+    finally:
+      - echo This always runs even if the install command fails
+
+artifacts:
+  files:
+    - "**/*"
+  base-directory: front/dist 

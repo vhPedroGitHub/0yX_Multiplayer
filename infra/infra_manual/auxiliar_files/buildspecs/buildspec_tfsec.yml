@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    on-failure: CONTINUE 
+    commands:
+      - FOLDER=`echo ${CODEBUILD_INITIATOR##*-}`
+      - cd infra/infra_auto/environments/$FOLDER
+      - tfsec ./; EXITCODE=0
+reports:
+  tfsec:
+    base-directory: reports
+    files:
+      - tfsec_report.xml
+    file-format: "JUNITXML"

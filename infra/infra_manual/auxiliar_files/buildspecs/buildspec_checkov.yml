@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  build:
+    # on-failure: CONTINUE 
+    commands:
+      - FOLDER=`echo ${CODEBUILD_INITIATOR##*-}`
+      - cd infra/infra_auto/environments/$FOLDER
+      # - checkov -d .
+      - checkov --soft-fail -d . 
+      - checkov --soft-fail --output junitxml -d . > checkov_report.xml
+reports:
+  checkov-report-group:
+    base-directory: reports
+    files:
+      - 'checkov_report.xml'
+    file-format: "JUNITXML"

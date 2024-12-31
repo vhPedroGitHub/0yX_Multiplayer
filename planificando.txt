@@ -1,0 +1,11 @@
+Quiero practicar mis habilidades para poder montar un juego de Ta Te Ti online utilizando aws para ofrecer mi servicio a todo el mundo. 
+La idea del juego es que se conecten los jugadores al servidor y este recopile los jugadores en linea. Cuando los jugadores elijan buscar una
+partida online se emparejara contra otro jugador. Las caracteristicas de la partida seran almacenadas en una base de datos psql. Crearemos una 
+rest API para poder interactuar con la base de datos. 
+
+pasos
+1- montar una instancia ec2 que me sirva la pagina web (opcional utilizar nginx como proxy inverso)
+2- utilizar amazon rds para montar una base de datos postgresql con la cual guardaremos toda la informacion relacionada a 
+los jugadores y sus partidas. 
+3- crear una rest api para comunicar el cliente con el servidor
+

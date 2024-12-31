@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - FOLDER=`echo ${CODEBUILD_INITIATOR##*-}`
+      - cd infra/infra_auto/environments/$FOLDER
+      - terrascan scan -i terraform --non-recursive -o junit-xml > terrascan_results.xml || true
+      - terrascan scan -i terraform --non-recursive || true
+reports:
+  terrascan:
+    base-directory: reports
+    file-format: "JUNITXML"
+    files:
+      - terrascan_results.xml

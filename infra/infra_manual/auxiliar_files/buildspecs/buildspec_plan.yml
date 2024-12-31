@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - FOLDER=`echo ${CODEBUILD_INITIATOR##*-}`
+      # - cd live/$FOLDER
+      - export TF_VAR_api_deployed_at=$(date +%s)
+      - "terraform -chdir=infra/infra_auto/environments/$FOLDER init"
+      - "terraform -chdir=infra/infra_auto/environments/$FOLDER plan -out plan.tfplan"
+      - cd infra/infra_auto/environments/$FOLDER && ls -la .terraform
+artifacts:
+  files:
+    - '**/*'
+cache:
+ paths:
+   - 'infra/infra_auto/environments/$FOLDER/.terraform/**/*'

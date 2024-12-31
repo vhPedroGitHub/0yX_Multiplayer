@@ -1,0 +1,8 @@
+CREATE DATABASE partida;
+
+CREATE TABLE games (
+  id SERIAL PRIMARY KEY,
+  game_date TIMESTAMP NOT NULL,
+  jugador_1 BOOLEAN NOT NULL,
+  jugador_2 BOOLEAN NOT NULL
+);

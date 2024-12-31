@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - FOLDER=`echo ${CODEBUILD_INITIATOR##*-}`
+      - cd infra/infra_auto/environments/$FOLDER
+      # - terraform init
+      - terraform show plan.tfplan
+      - terraform apply -input=false plan.tfplan
+      # - "terraform plan -out tfapply"

@@ -1,0 +1,78 @@
+body {
+  position: relative;
+  margin: 0;
+}
+
+.cs {
+  width: 30px;
+  height: 30px;
+  border: solid black 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.juego {
+  display: grid;
+  grid-template-columns: 30px 30px 30px;
+  grid-template-rows: 30px 30px 30px;
+  gap: 10px;
+}
+
+.turnos {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cs-on {
+  background-color: aqua;
+}
+
+.win {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: solid black 2px;
+  border-radius: 10%;
+  top: calc(50vh - 150px);
+  right: calc(50vw - 150px);
+  background-color: #222;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.win-off {
+  visibility: hidden;
+}
+
+.win-on {
+  visibility: visible;
+}
+
+.stats {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.stats h3 {
+  margin-bottom: 10px;
+}
+
+.stats p {
+  margin: 5px 0;
+}
