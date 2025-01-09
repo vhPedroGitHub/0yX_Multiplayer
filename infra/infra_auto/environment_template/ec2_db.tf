@@ -1,3 +1,6 @@
+# Create the EC2 and Database instances.
+
+# Module to create the Security Group
 module "security_groupSG" {
   source = "../../modules/security_group"
 
@@ -12,6 +15,7 @@ module "security_groupSG" {
   egress_rules_bd = var.egress_rules_bd
 }
 
+# Module to create the ec2 instance
 module "ec2_instance" {    
   source = "../../modules/ec2"
 
@@ -29,6 +33,7 @@ module "ec2_instance" {
 
 }
 
+# Module to create the RDS instance
 module "rds_database_dev" {
   source = "../../modules/rds_instance"
 

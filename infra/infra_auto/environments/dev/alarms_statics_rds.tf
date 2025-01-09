@@ -64,38 +64,38 @@ module "rds_alarms_statics" {
       alarm_ok_actions                = [module.lambda_alarms_bot.lambda_function_arn]
 
       alarm_InstanceId                = module.template.identifier
-    },
-
-    #------------------
-    # EBSByteBalance% |
-    #------------------
-    {
-      alarm_name                = "EBSByteBalance%_RDS"
-      alarm_description         = <<-EOF
-                                  This alarm is used to detect a low percentage of performance credits 
-                                  remaining in the burst bucket. A low byte balance percentage can cause
-                                  performance bottleneck problems. This alarm is not recommended for Aurora 
-                                  PostgreSQL instances.
-                                EOF
-
-      alarm_metric_name               = "EBSByteBalance%"
-      alarm_namespace                 = "AWS/RDS"
-    
-      alarm_period                    = 60
-      alarm_evaluation_periods        = 1
-      alarm_datapoints_to_alarm       = 1
-    
-      alarm_statistic                 = "Average"
-      alarm_threshold                 = 10.0
-      alarm_comparison_operator       = "LessThanThreshold"
-
-      alarm_insufficient_data_actions = []
-      alarm_actions_enabled           = true
-      alarm_actions                   = [module.lambda_alarms_bot.lambda_function_arn]
-      alarm_ok_actions                = [module.lambda_alarms_bot.lambda_function_arn]
-
-      alarm_InstanceId                = module.template.identifier
     }
+
+    # #------------------
+    # # EBSByteBalance% |
+    # #------------------
+    # {
+    #   alarm_name                = "EBSByteBalance%_RDS"
+    #   alarm_description         = <<-EOF
+    #                               This alarm is used to detect a low percentage of performance credits 
+    #                               remaining in the burst bucket. A low byte balance percentage can cause
+    #                               performance bottleneck problems. This alarm is not recommended for Aurora 
+    #                               PostgreSQL instances.
+    #                             EOF
+
+    #   alarm_metric_name               = "EBSByteBalance%"
+    #   alarm_namespace                 = "AWS/RDS"
+    
+    #   alarm_period                    = 60
+    #   alarm_evaluation_periods        = 1
+    #   alarm_datapoints_to_alarm       = 1
+    
+    #   alarm_statistic                 = "Average"
+    #   alarm_threshold                 = 10.0
+    #   alarm_comparison_operator       = "LessThanThreshold"
+
+    #   alarm_insufficient_data_actions = []
+    #   alarm_actions_enabled           = true
+    #   alarm_actions                   = [module.lambda_alarms_bot.lambda_function_arn]
+    #   alarm_ok_actions                = [module.lambda_alarms_bot.lambda_function_arn]
+
+    #   alarm_InstanceId                = module.template.identifier
+    # }
   ]
 
   depends_on = [ module.lambda_alarms_bot ]

@@ -3,7 +3,7 @@ module "lambda_alarms_bot" {
 
   function_name         = "bot-telegram"
   handler               = "main.lambda_handler"
-  lambda_path           = "/home/pedro/Ta-Te-ti--X-o-O-/infra/infra_auto/auxiliar_files/functions/deploy_notification/"
+  lambda_path           = "../../auxiliar_files/functions/deploy_notification/"
   lambda_zip_name       = "lambda_bot_telegram.zip"
   packaging_file        = "packaging_python.sh"
   environment_variables = {
@@ -13,5 +13,5 @@ module "lambda_alarms_bot" {
   sg_ids                = [module.template.sg_db, module.template.sg_ec2]
   subnets               = module.template.private_subnets
   runtime               = "python3.10"
-  source_dir            = "/home/pedro/Ta-Te-ti--X-o-O-/infra/infra_auto/auxiliar_files/functions/deploy_notification"
+  source_dir            = "../../auxiliar_files/functions/deploy_notification/"
 }

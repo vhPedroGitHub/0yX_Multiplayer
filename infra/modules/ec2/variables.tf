@@ -46,3 +46,8 @@ variable tags {
     ManagedBy = "Terraform"
   }
 }
+
+variable "user_data" {
+  type    = string
+  default = null
+}
