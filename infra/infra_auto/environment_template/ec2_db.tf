@@ -30,6 +30,7 @@ module "ec2_instance" {
   subnet_id                   = module.vpc_main.public_subnet_ids[0]
   ami_type                    = var.ami_type
   vpc_security_group_ids      = [module.security_groupSG.id]
+  user_data                   = var.user_data
 
 }
 

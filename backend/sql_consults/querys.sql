@@ -6,3 +6,10 @@ CREATE TABLE games (
   jugador_1 BOOLEAN NOT NULL,
   jugador_2 BOOLEAN NOT NULL
 );
+
+CREATE TABLE players (
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL,
+    age INTEGER,
+    password_player VARCHAR(255)
+);

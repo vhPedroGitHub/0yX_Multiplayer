@@ -18,6 +18,7 @@ module "template" {
   name_instance = var.name_instance
   public_key = var.public_key
   ami_type = var.ami_type
+  user_data = "/home/pedro/tecno-program/Ta-Te-Ti-Multiplayer/infra/infra_auto/auxiliar_files/scripts/install/install_dependencies.sh"
 
   # ---------
   # RDS VARS|

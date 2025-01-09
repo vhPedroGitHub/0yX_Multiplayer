@@ -6,8 +6,6 @@ sudo apt update && sudo apt upgrade -y
 sudo apt-get update -y
 sudo apt-get install ca-certificates curl -y
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y    
 
@@ -15,3 +13,11 @@ sudo docker run hello-world
 
 curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash
 sudo apt -y install sysbench
+
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+sudo -i -u postgres
+psql
+
+ALTER USER postgres WITH PASSWORD '12345678';

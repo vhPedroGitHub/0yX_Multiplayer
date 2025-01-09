@@ -71,6 +71,10 @@ variable "ami_specific_id" {
 variable "public_key" {
   type    = string
 }
+variable "user_data" {
+  type    = string
+  default = null
+} 
 
 # ---------
 # RDS VARS|

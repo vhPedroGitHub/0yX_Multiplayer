@@ -14,4 +14,4 @@ export const COMBINACIONES = [
   [2, 4, 6],
 ];
 
-export const ip_server_flask = "192.168.193.68:5000"
+export const ip_server_flask = "34.204.78.48:5000"
