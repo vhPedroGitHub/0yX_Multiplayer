@@ -9,6 +9,7 @@ phases:
     commands:
       - echo Nothing to do in the pre_build phase...
       - cd front
+      - npm install
   build:
     commands:
       - echo Build started on `date`
