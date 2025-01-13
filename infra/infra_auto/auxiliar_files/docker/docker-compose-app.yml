@@ -1,0 +1,21 @@
+services:
+
+  application-fronted:
+    image: ta-multi
+    container_name: frontapp_game
+    restart: unless-stopped
+    ports:
+      - 7777:80
+    networks:
+      - backend
+  
+  application-backend:
+    image: backapp
+    container_name: backapp_game
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    networks:
+      - backend
+networks:
+  backend:

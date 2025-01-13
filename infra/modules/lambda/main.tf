@@ -71,12 +71,8 @@ resource "null_resource" "lambda" {
   }
 }
 
-resource "random_id" "bucket_suffix" {
-  byte_length = 4  # Define cuántos bytes tendrá el sufijo.
-}
-
 resource "aws_s3_bucket" "lambda" {
-  bucket = "${var.function_name}-${random_id.bucket_suffix.hex}"
+  bucket = "${var.function_name}-"
   force_destroy = true
 }
 

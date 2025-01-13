@@ -16,8 +16,3 @@ sudo apt -y install sysbench
 
 sudo apt update
 sudo apt install postgresql postgresql-contrib
-
-sudo -i -u postgres
-psql
-
-ALTER USER postgres WITH PASSWORD '12345678';

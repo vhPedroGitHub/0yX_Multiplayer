@@ -164,4 +164,4 @@ def handle_start_game(data):
     emit('started_game', {'message': 'The game has started!', 'isReady': 'true', 'player_2': onlinePlayer}, room=room)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0', port=5000)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)

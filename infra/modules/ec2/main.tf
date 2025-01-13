@@ -20,8 +20,6 @@ resource "aws_instance" "server" {
   vpc_security_group_ids      = var.vpc_security_group_ids
   associate_public_ip_address = var.associate_public_ip_address
   key_name = var.public_key
-  
-  user_data = file(var.user_data)
 
   # root_block_device {
   #   volume_size = var.volume_size
