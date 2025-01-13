@@ -21,3 +21,7 @@ phases:
 artifacts:
   files:
     - front/dist/**/*
+cache:
+  paths:
+    - node_modules/**/* 
+    - front/dist/**/*
